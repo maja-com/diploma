@@ -1,0 +1,24 @@
+{% extends "base.html" %}
+
+{% block content %}
+<div class="container mt-4">
+  <h2>Новий вішліст</h2>
+
+  <form method="POST">
+    <div class="mb-3">
+      <label class="form-label">Назва вішліста:</label>
+      <input type="text" name="title" class="form-control" required>
+    </div>
+
+    <div class="form-check mb-3">
+      <input class="form-check-input" type="checkbox" name="is_private" id="privateCheck" checked>
+      <label class="form-check-label" for="privateCheck">
+        Приватний (бачите тільки ви)
+      </label>
+    </div>
+
+    <button type="submit" class="btn btn-success">💾 Зберегти</button>
+    <a href="{{ url_for('wishlists') }}" class="btn btn-secondary">← Скасувати</a>
+  </form>
+</div>
+{% endblock %}

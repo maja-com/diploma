@@ -1,0 +1,25 @@
+{% extends "base.html" %}
+
+{% block content %}
+<div class="container mt-4">
+  <h2>Мої нотатки</h2>
+
+  <a href="{{ url_for('add_note') }}" class="btn btn-outline-primary btn-sm mb-3">➕ Додати нотатку</a>
+
+  {% if notes %}
+    <ul class="list-group">
+      {% for note in notes %}
+        <li class="list-group-item">
+          <strong>{{ note.title }}</strong><br>
+          <small class="text-muted">{{ note.content }}</small><br>
+          <a href="{{ url_for('delete_note', note_id=note.id) }}" class="btn btn-sm btn-outline-danger mt-1">🗑️ Видалити</a>
+        </li>
+      {% endfor %}
+    </ul>
+  {% else %}
+    <p class="text-muted">Немає жодної нотатки.</p>
+  {% endif %}
+
+  <a href="{{ url_for('profile') }}" class="btn btn-link mt-3">← Назад до профілю</a>
+</div>
+{% endblock %}

@@ -1,0 +1,32 @@
+{% extends "base.html" %}
+
+{% block content %}
+<div class="container mt-4">
+  <h2>Створити подію</h2>
+
+  <form method="POST">
+    <div class="mb-3">
+      <label class="form-label">Назва події:</label>
+      <input type="text" name="title" class="form-control" required>
+    </div>
+
+    <div class="mb-3">
+      <label class="form-label">Опис:</label>
+      <input type="text" name="description" class="form-control">
+    </div>
+
+    <div class="mb-3">
+      <label class="form-label">Дата та час початку:</label>
+      <input type="datetime-local" name="start" class="form-control" required>
+    </div>
+
+    <div class="mb-3">
+      <label class="form-label">Дата та час завершення:</label>
+      <input type="datetime-local" name="end" class="form-control" required>
+    </div>
+
+    <button type="submit" class="btn btn-success">📅 Створити</button>
+    <a href="{{ url_for('profile') }}" class="btn btn-secondary">← Назад</a>
+  </form>
+</div>
+{% endblock %}

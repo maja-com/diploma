@@ -1,0 +1,40 @@
+{% extends "base.html" %}
+
+{% block content %}
+<div class="container mt-4">
+  <h2>🎁 Мої вішлісти</h2>
+
+  <a href="{{ url_for('add_wishlist') }}" class="btn btn-outline-primary btn-sm mb-3">➕ Додати вішліст</a>
+
+  {% if my_wishlists %}
+    <ul class="list-group mb-4">
+      {% for w in my_wishlists %}
+        <li class="list-group-item d-flex justify-content-between align-items-center">
+          {{ w.title }}
+          <span>
+            <span class="badge bg-{{ 'secondary' if w.is_private else 'success' }}">
+              {{ 'Приватний' if w.is_private else 'Публічний' }}
+            </span>
+            <a href="{{ url_for('delete_wishlist', wishlist_id=w.id) }}" class="btn btn-sm btn-outline-danger ms-2">🗑️</a>
+          </span>
+        </li>
+      {% endfor %}
+    </ul>
+  {% else %}
+    <p class="text-muted">Немає жодного вішліста.</p>
+  {% endif %}
+
+  <h4>👪 Публічні вішлісти членів родини</h4>
+  {% if public_wishlists %}
+    <ul class="list-group">
+      {% for w in public_wishlists %}
+        <li class="list-group-item">{{ w.title }}</li>
+      {% endfor %}
+    </ul>
+  {% else %}
+    <p class="text-muted">Немає публічних вішлістів у вашій родині.</p>
+  {% endif %}
+
+  <a href="{{ url_for('profile') }}" class="btn btn-link mt-3">← Назад до профілю</a>
+</div>
+{% endblock %}

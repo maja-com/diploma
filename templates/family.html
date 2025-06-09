@@ -1,0 +1,17 @@
+{% extends "base.html" %}
+
+{% block content %}
+<div class="container mt-4">
+  <h2>Створити сімейний акаунт</h2>
+
+  <form method="POST">
+    <div class="mb-3">
+      <label class="form-label">Назва родини:</label>
+      <input type="text" name="family_name" class="form-control" placeholder="Наприклад: Сім'я Іваненків" required>
+    </div>
+
+    <button type="submit" class="btn btn-primary">👪 Створити родину</button>
+    <a href="{{ url_for('profile') }}" class="btn btn-secondary">← Назад</a>
+  </form>
+</div>
+{% endblock %}
